@@ -1,10 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Button } from 'react-native'
+import React, { useState } from 'react'
 
 const Contador = () => {
+  const [contador, setContador] = useState(0)
+  const aumentar = () => setContador((prev) => prev + 1)
+  const disminuir = () => setContador((prev) => (prev > 0 ? prev - 1 : 0))
   return (
     <View>
-      <Text>Contador</Text>
+      <Button title='Aumentar' onPress={aumentar} />
+      <Button title='Disminuir' onPress={disminuir} />
+      <Text>{contador}</Text>
     </View>
   )
 }
