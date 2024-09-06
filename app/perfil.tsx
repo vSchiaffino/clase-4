@@ -1,15 +1,23 @@
-import { View, Text, Button, Modal, TextInput } from 'react-native'
+import { View, Text, Modal, TextInput } from 'react-native'
+import Button from '@/components/Button'
 import React, { useState } from 'react'
+import Container from '@/components/Container'
+import { Colors } from '@/constants/Colors'
 
 const Perfil = () => {
   const [modalVisible, setModalVisible] = useState(false)
   const [nameToChange, setNameToChange] = useState('')
   const [name, setName] = useState('Valentín Schiaffino')
   return (
-    <View>
-      <Modal visible={modalVisible} transparent={true}>
+    <Container>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
         <View
           style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
@@ -17,20 +25,30 @@ const Perfil = () => {
         >
           <View
             style={{
-              width: 200,
-              height: 100,
+              rowGap: 20,
+              padding: 40,
+              width: 300,
+              height: 200,
               borderRadius: 20,
-              backgroundColor: 'red',
+              backgroundColor: 'white',
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
             <TextInput
+              style={{
+                borderRadius: 5,
+                borderColor: Colors.gray.backgroundPressed,
+                borderWidth: 1,
+                width: '100%',
+                paddingHorizontal: 10,
+                paddingVertical: 5,
+              }}
               onChangeText={(text) => setNameToChange(text)}
               value={nameToChange}
             />
             <Button
-              title='Guardar nombre'
+              label='Guardar nombre'
               onPress={() => {
                 setName(nameToChange)
                 setNameToChange('')
@@ -40,9 +58,16 @@ const Perfil = () => {
           </View>
         </View>
       </Modal>
-      <Text>Hola {name}</Text>
-      <Button title='Cambiar nombre' onPress={() => setModalVisible(true)} />
-    </View>
+      <View style={{ rowGap: 20 }}>
+        <Text style={{ textAlign: 'center', fontSize: 15 }}>Hola {name}</Text>
+        <Button
+          label='Cambiar nombre'
+          onPress={() => {
+            setModalVisible(true)
+          }}
+        />
+      </View>
+    </Container>
   )
 }
 

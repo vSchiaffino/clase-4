@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors'
 import { useState } from 'react'
 import { Pressable, Text } from 'react-native'
 
@@ -7,7 +8,9 @@ export interface CardProps {
 
 export const Card = ({ label }: CardProps) => {
   const [pressed, setPressed] = useState(false)
-  const backgroundColor = pressed ? '#253C46' : '#808080'
+  const backgroundColor = pressed
+    ? Colors.gray.backgroundPressed
+    : Colors.gray.background
   return (
     <Pressable
       onPress={() => setPressed((prev) => !prev)}
