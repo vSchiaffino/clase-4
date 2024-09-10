@@ -3,26 +3,29 @@ import { Ionicons } from '@expo/vector-icons'
 
 export default function RootLayout() {
   return (
-    <Tabs initialRouteName='Perfil'>
+    <Tabs>
       <Tabs.Screen
-        name='Contador'
+        name='contador'
         options={{
+          title: 'Contador',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name='calculator' color={color} size={size} />
           ),
         }}
       />
       <Tabs.Screen
-        name='Perfil'
+        name='index'
         options={{
+          title: 'Perfil',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name='person' color={color} size={size} />
           ),
         }}
       />
       <Tabs.Screen
-        name='Tarjetas'
+        name='tarjetas'
         options={{
+          title: 'Tarjetas',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name='apps' color={color} size={size} />
           ),
