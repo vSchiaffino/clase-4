@@ -1,16 +1,21 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text } from 'react-native'
 import React, { useState } from 'react'
+
+import Button from '@/components/Button'
+import Container from '@/components/Container'
 
 const Contador = () => {
   const [contador, setContador] = useState(0)
   const aumentar = () => setContador((prev) => prev + 1)
   const disminuir = () => setContador((prev) => (prev > 0 ? prev - 1 : 0))
   return (
-    <View>
-      <Button title='Aumentar' onPress={aumentar} />
-      <Button title='Disminuir' onPress={disminuir} />
-      <Text>{contador}</Text>
-    </View>
+    <Container>
+      <View style={{ rowGap: 20 }}>
+        <Text style={{ textAlign: 'center', fontSize: 20 }}>{contador}</Text>
+        <Button onPress={aumentar} label='Aumentar' />
+        <Button onPress={disminuir} label='Disminuir' />
+      </View>
+    </Container>
   )
 }
 
